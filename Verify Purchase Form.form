@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        }
+      ],
+      "label": "Verify Purchase",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0sfd8cz",
+        "columns": null
+      },
+      "id": "Field_0uiz3l6",
+      "key": "IsVerifiedPurchase",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "FormVerifyPurchase",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}
