@@ -13,6 +13,67 @@
     <bpmn:messageFlow id="Flow_0rxwdp1" sourceRef="Participant_13rwe8o" targetRef="Event_189k7vk" />
   </bpmn:collaboration>
   <bpmn:process id="Process_12wlaf1" name="New BPMN Diagram" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_3oms9a7">{
+  "components": [
+    {
+      "components": [
+        {
+          "label": "Product ID",
+          "type": "number",
+          "layout": {
+            "row": "Row_1clyksu",
+            "columns": null
+          },
+          "id": "Field_0yl0q5n",
+          "key": "productID",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Quantity",
+          "type": "number",
+          "layout": {
+            "row": "Row_1jki7qh",
+            "columns": null
+          },
+          "id": "Field_1omthif",
+          "key": "productQuantity",
+          "defaultValue": 1,
+          "increment": "1",
+          "decimalDigits": 0,
+          "validate": {
+            "min": 1,
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "isRepeating": true,
+      "allowAddRemove": true,
+      "defaultRepetitions": 1,
+      "label": "Products",
+      "type": "dynamiclist",
+      "layout": {
+        "row": "Row_19o20d1",
+        "columns": null
+      },
+      "id": "Field_1wfffj2",
+      "path": "productlist"
+    }
+  ],
+  "type": "default",
+  "id": "FormSelectProduct",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_1q4kbb0">
       <bpmn:lane id="Lane_159jdeh" name="Seller">
         <bpmn:flowNodeRef>Gateway_1lsu437</bpmn:flowNodeRef>
@@ -137,6 +198,9 @@
       <bpmn:compensateEventDefinition id="CompensateEventDefinition_0npkoob" />
     </bpmn:endEvent>
     <bpmn:userTask id="Activity_1a67hoi" name="Select products">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_3oms9a7" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0b8xzbo</bpmn:incoming>
       <bpmn:outgoing>Flow_0lb8dr1</bpmn:outgoing>
     </bpmn:userTask>
@@ -171,6 +235,7 @@
     <bpmn:association id="Association_0qne40d" associationDirection="One" sourceRef="Event_0eg12m0" targetRef="Activity_0cdg2tm" />
   </bpmn:process>
   <bpmn:message id="Message_3blsstu" name="Message_3blsstu" />
+  <bpmn:message id="Message_30evgkr" name="Message_30evgkr" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0muec07">
       <bpmndi:BPMNShape id="Participant_02c46st_di" bpmnElement="Participant_02c46st" isHorizontal="true">

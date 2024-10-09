@@ -10,7 +10,10 @@
             "columns": null
           },
           "id": "Field_0yl0q5n",
-          "key": "productID"
+          "key": "productID",
+          "validate": {
+            "required": true
+          }
         },
         {
           "label": "Quantity",
@@ -23,7 +26,11 @@
           "key": "productQuantity",
           "defaultValue": 1,
           "increment": "1",
-          "decimalDigits": 0
+          "decimalDigits": 0,
+          "validate": {
+            "min": 1,
+            "required": true
+          }
         }
       ],
       "showOutline": true,
