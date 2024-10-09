@@ -73,6 +73,71 @@
   },
   "schemaVersion": 16
 }</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_3070ihe">{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        }
+      ],
+      "label": "Verify Purchase",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0sfd8cz",
+        "columns": null
+      },
+      "id": "Field_0uiz3l6",
+      "key": "IsVerifiedPurchase",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "FormVerifyPurchase",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_30leeb8">{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        }
+      ],
+      "label": "Verify Received Items",
+      "type": "radio",
+      "layout": {
+        "row": "Row_17vlji5",
+        "columns": null
+      },
+      "id": "Field_1yuxxi2",
+      "key": "radio_makdmd",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "FormVerifyItems",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_1q4kbb0">
       <bpmn:lane id="Lane_159jdeh" name="Seller">
@@ -220,10 +285,16 @@
       <bpmn:outgoing>Flow_0elh60f</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:userTask id="Activity_1c7hl1b" name="Verify purchase order">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_3070ihe" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ab6v9h</bpmn:incoming>
       <bpmn:outgoing>Flow_1vfwna0</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Activity_0wy0ubf" name="Verify received items">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_30leeb8" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1h1c96j</bpmn:incoming>
       <bpmn:outgoing>Flow_1fqtt8m</bpmn:outgoing>
     </bpmn:userTask>
