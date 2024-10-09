@@ -185,7 +185,7 @@
     <bpmn:intermediateCatchEvent id="Event_0wtl5bh" name="Customer payment status">
       <bpmn:incoming>Flow_1kwgc3q</bpmn:incoming>
       <bpmn:outgoing>Flow_0vynk4h</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0du7wce" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0du7wce" messageRef="Message_3blsstu" />
     </bpmn:intermediateCatchEvent>
     <bpmn:endEvent id="Event_0mquuib">
       <bpmn:incoming>Flow_0r7ehe3</bpmn:incoming>
@@ -231,7 +231,7 @@
     <bpmn:intermediateCatchEvent id="Event_184ifjc" name="Order completion / complaints">
       <bpmn:incoming>Flow_1fqtt8m</bpmn:incoming>
       <bpmn:outgoing>Flow_0j0ebci</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_16kstuc" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_16kstuc" messageRef="Message_3l7nki6" />
     </bpmn:intermediateCatchEvent>
     <bpmn:sendTask id="Activity_192r181" name="Process checkout">
       <bpmn:extensionElements>
@@ -248,7 +248,7 @@
     <bpmn:intermediateCatchEvent id="Event_09pvjxn" name="Purchase order">
       <bpmn:incoming>Flow_0lb8dr1</bpmn:incoming>
       <bpmn:outgoing>Flow_1929va9</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1d42rj6" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1d42rj6" messageRef="Message_30evgkr" />
     </bpmn:intermediateCatchEvent>
     <bpmn:serviceTask id="Activity_0cdg2tm" name="Refund customer payment" isForCompensation="true">
       <bpmn:extensionElements>
@@ -272,7 +272,7 @@
     <bpmn:intermediateCatchEvent id="Event_189k7vk" name="Seller payment received">
       <bpmn:incoming>Flow_1neiv2c</bpmn:incoming>
       <bpmn:outgoing>Flow_1rsrmvr</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0stcdhk" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0stcdhk" messageRef="Message_1bicqhh" />
     </bpmn:intermediateCatchEvent>
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0b8xzbo</bpmn:outgoing>
@@ -299,14 +299,34 @@
       <bpmn:outgoing>Flow_1fqtt8m</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0jwh41q" name="Yes" sourceRef="Gateway_117if2d" targetRef="Activity_0oshg7h" />
-    <bpmn:sequenceFlow id="Flow_0cbunnu" name="Yes" sourceRef="Gateway_1lsu437" targetRef="Activity_0rydbzu" />
+    <bpmn:sequenceFlow id="Flow_0cbunnu" name="Yes" sourceRef="Gateway_1lsu437" targetRef="Activity_0rydbzu">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=IsVerifiedPurchase</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ab6v9h" name="Yes" sourceRef="Gateway_1i3hay5" targetRef="Activity_1c7hl1b">
       <bpmn:extensionElements />
     </bpmn:sequenceFlow>
     <bpmn:association id="Association_0qne40d" associationDirection="One" sourceRef="Event_0eg12m0" targetRef="Activity_0cdg2tm" />
   </bpmn:process>
-  <bpmn:message id="Message_3blsstu" name="Message_3blsstu" />
-  <bpmn:message id="Message_30evgkr" name="Message_30evgkr" />
+  <bpmn:message id="Message_3blsstu" name="Message_PaymentStatus">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=paymentStatus" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_30evgkr" name="Message_PurchaseOrder">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=purchaseOrder" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_3l7nki6" name="Message_CompleteOrder">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=completeOrder" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_1bicqhh" name="Message_SellerReceivePayment">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=sellerReceivePayment" />
+    </bpmn:extensionElements>
+  </bpmn:message>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0muec07">
       <bpmndi:BPMNShape id="Participant_02c46st_di" bpmnElement="Participant_02c46st" isHorizontal="true">
