@@ -111,8 +111,12 @@
     {
       "values": [
         {
-          "label": "Yes",
-          "value": "yes"
+          "label": "Order Completed",
+          "value": "true"
+        },
+        {
+          "label": "Order Incomplete",
+          "value": "false"
         }
       ],
       "label": "Verify Received Items",
@@ -122,7 +126,7 @@
         "columns": null
       },
       "id": "Field_1yuxxi2",
-      "key": "radio_makdmd",
+      "key": "AreItemsReceived",
       "validate": {
         "required": true
       }
@@ -223,7 +227,9 @@
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P2D</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_06yfcvd" name="No" sourceRef="Gateway_117if2d" targetRef="Activity_0rydbzu" />
+    <bpmn:sequenceFlow id="Flow_06yfcvd" name="No" sourceRef="Gateway_117if2d" targetRef="Activity_0rydbzu">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=AreItemsReceived="false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_18j2z59" name="No" sourceRef="Gateway_1lsu437" targetRef="Event_0k7njwh" />
     <bpmn:sequenceFlow id="Flow_0r7ehe3" name="No" sourceRef="Gateway_1i3hay5" targetRef="Event_0mquuib">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(paymentValid)</bpmn:conditionExpression>
@@ -300,7 +306,7 @@
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0jwh41q" name="Yes" sourceRef="Gateway_117if2d" targetRef="Activity_0oshg7h" />
     <bpmn:sequenceFlow id="Flow_0cbunnu" name="Yes" sourceRef="Gateway_1lsu437" targetRef="Activity_0rydbzu">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=IsVerifiedPurchase</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=IsVerifiedPurchase="yes"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ab6v9h" name="Yes" sourceRef="Gateway_1i3hay5" targetRef="Activity_1c7hl1b">
       <bpmn:extensionElements />

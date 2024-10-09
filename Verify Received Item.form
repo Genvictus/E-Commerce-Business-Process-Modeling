@@ -3,8 +3,12 @@
     {
       "values": [
         {
-          "label": "Yes",
-          "value": "yes"
+          "label": "Order Completed",
+          "value": "true"
+        },
+        {
+          "label": "Order Incomplete",
+          "value": "false"
         }
       ],
       "label": "Verify Received Items",
@@ -14,7 +18,7 @@
         "columns": null
       },
       "id": "Field_1yuxxi2",
-      "key": "radio_makdmd",
+      "key": "AreItemsReceived",
       "validate": {
         "required": true
       }
