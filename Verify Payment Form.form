@@ -3,22 +3,22 @@
     {
       "values": [
         {
-          "label": "Accept order",
+          "label": "Payment received",
           "value": "yes"
         },
         {
-          "label": "Cancel order",
+          "label": "Payment not received",
           "value": "no"
         }
       ],
-      "label": "Verify Purchase",
+      "label": "Verify Payment",
       "type": "radio",
       "layout": {
         "row": "Row_0sfd8cz",
         "columns": null
       },
       "id": "Field_0uiz3l6",
-      "key": "IsVerifiedPurchase",
+      "key": "IsVerifiedPayment",
       "defaultValue": "value",
       "validate": {
         "required": true
